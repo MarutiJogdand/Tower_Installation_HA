@@ -1,0 +1,2 @@
+ansible_ssh_private_key_file=~/.ssh/openstack.pem
+workstation-b154.rhpds.opentlc.com

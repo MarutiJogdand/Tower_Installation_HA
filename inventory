@@ -1,0 +1,39 @@
+[tower]
+
+tower1.1e77.internal public_host_name=tower1.1e77.example.opentlc.com ssh_host=tower1.1e77.internal
+tower2.1e77.internal public_host_name=tower2.1e77.example.opentlc.com ssh_host=tower2.1e77.internal
+tower3.1e77.internal public_host_name=tower3.1e77.example.opentlc.com ssh_host=tower3.1e77.internal
+
+[database]
+support1.1e77.internal ssh_host=support1.1e77.internal
+
+[isolated_group_osp]
+workstation-b154.rhpds.opentlc.com  
+
+[isolated_group_osp:vars]
+controller=tower
+ansible_user='cloud-user'
+ansible_ssh_private_key_file='~/.ssh/openstack.pem'
+
+[all:vars]
+admin_password='redhat'
+
+pg_host='support1.1e77.internal'
+pg_port='5432'
+
+pg_database='awx'
+pg_username='awx'
+pg_password='redhat'
+
+rabbitmq_port=5672
+rabbitmq_vhost=tower
+rabbitmq_username=tower
+rabbitmq_password='redhat'
+rabbitmq_cookie=cookiemonster
+
+# Needs to be true for fqdns and ip addresses
+rabbitmq_use_long_name=true
+
+# Isolated Tower nodes automatically generate an RSA key for authentication;
+# To disable this behavior, set this value to false
+isolated_key_generation=true
